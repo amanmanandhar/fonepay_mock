@@ -1,4 +1,5 @@
 from odoo import fields, models
+from odoo.http import request
 
 class PaymentProvider(models.Model):
     _inherit = 'payment.provider'
@@ -18,3 +19,50 @@ class PaymentProvider(models.Model):
         if self.filtered(lambda p: p.code == 'fonepay'):
             return True
         return super()._is_available(*args, **kwargs)
+
+    def fonepay_test_connection(self):
+        self.ensure_one()
+
+        if self.code == 'fonepay':
+            return
+
+        try:
+            response = request.post(
+                "mock_url",
+                json={
+                    "username": self.fonepay_username,
+                    "password": self.fonepay_password,
+                },
+                timeout=20,
+            )
+            if response.status_code == 200:
+                return{
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Fonepay',
+                        'message': 'Connected to fonepay successfully',
+                        'type': 'success',
+                        'sticky': False,
+                    }
+                }
+            return{
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': 'Fonepay',
+                    'message': f'Connection failed ({response.status_code})',
+                    'type': 'warning',
+                    'sticky': False,
+                },
+            }
+        except Exception as e:
+            return{
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': 'Fonepay',
+                    'message': str(e),
+                    'sticky': True,
+                }
+            }
