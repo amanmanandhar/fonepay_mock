@@ -1,36 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "fonepay_provider_mock",
-
+    'name': "Fonepay Payment Provider",
     'summary': "Short (1 phrase/line) summary of the module's purpose",
-
     'description': """
-Long description of module's purpose
+        Long description of module's purpose
     """,
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
+    'author': "Aman Manandhar",
+    'category': 'payment',
+    'version': '18.0.1.0.0',
     'depends': ['payment'],
-
-    # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
         'data/payment_provider_data.xml',
         'views/payment_provider_views.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
     ],
     'installable': True,
 }
