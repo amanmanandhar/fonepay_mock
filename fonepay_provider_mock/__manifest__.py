@@ -26,6 +26,7 @@ Long description of module's purpose
         'views/views.xml',
         'views/templates.xml',
         'data/payment_provider_data.xml',
+        'views/payment_provider_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="fone_pay_inherit" model="ir.ui.view">
+        <field name="name">FonePay Inherit Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='provider_credentials']" position="inside">
+                <field name="fonepay_merchant_code" invisible="code != 'fonepay'"/>
+                <field name="fonepay_username" invisible="code != 'fonepay'"/>
+                <field name="fonepay_password" invisible="code != 'fonepay'"/>
+                <field name="fonepay_secret_key" invisible="code != 'fonepay'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
