@@ -13,9 +13,7 @@
             </xpath>
             <xpath expr="//form/sheet" position="before">
                 <header>
-                <button name="fonepay_test_connection" type="object" class="btn btn-primary btn-sm" icon="fa-plug" invisible="code != 'fonepay'">
-                Test Connection
-                </button>
+                <field name="id" widhet="fonepay_test_button"/>
                 </header>
             </xpath>
         </field>
