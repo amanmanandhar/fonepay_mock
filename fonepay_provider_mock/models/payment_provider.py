@@ -28,7 +28,7 @@ class PaymentProvider(models.Model):
 
         try:
             response = request.post(
-                "mock_url",
+                "http://127.0.0.1:5000/auth",
                 json={
                     "username": self.fonepay_username,
                     "password": self.fonepay_password,
