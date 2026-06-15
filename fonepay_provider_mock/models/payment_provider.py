@@ -1,5 +1,5 @@
 from odoo import fields, models
-from odoo.http import request
+import requests
 
 class PaymentProvider(models.Model):
     _inherit = 'payment.provider'
@@ -23,11 +23,11 @@ class PaymentProvider(models.Model):
     def fonepay_test_connection(self):
         self.ensure_one()
 
-        if self.code == 'fonepay':
+        if self.code != 'fonepay':
             return
 
         try:
-            response = request.post(
+            response = requests.post(
                 "http://127.0.0.1:5000/auth",
                 json={
                     "username": self.fonepay_username,
@@ -44,6 +44,7 @@ class PaymentProvider(models.Model):
                         'message': 'Connected to fonepay successfully',
                         'type': 'success',
                         'sticky': False,
+                        'next': {'type': 'ir.actions.act_window_close'},
                     }
                 }
             return{
@@ -54,6 +55,7 @@ class PaymentProvider(models.Model):
                     'message': f'Connection failed ({response.status_code})',
                     'type': 'warning',
                     'sticky': False,
+                    'next': {'type': 'ir.actions.act_window_close'},
                 },
             }
         except Exception as e:
@@ -64,5 +66,6 @@ class PaymentProvider(models.Model):
                     'title': 'Fonepay',
                     'message': str(e),
                     'sticky': True,
+                    'next': {'type': 'ir.actions.act_window_close'},
                 }
             }
