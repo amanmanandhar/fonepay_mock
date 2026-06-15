@@ -9,12 +9,6 @@
     'category': 'payment',
     'version': '18.0.1.0.0',
     'depends': ['payment'],
-    'assets':{
-        'web.assets_backend': [
-            'fonepay_provider_mock/static/src/js/notification.js',
-            'fonepay_provider_mock/static/src/xml/notification.xml',
-        ],
-    },
     'data': [
         'data/payment_provider_data.xml',
         'views/payment_provider_views.xml',

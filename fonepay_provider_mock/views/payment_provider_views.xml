@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="payment.payment_provider_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='provider_credentials']" position="inside">
+                <field name="fonepay_api_url" invisible="code != 'fonepay'"/>
                 <field name="fonepay_merchant_code" invisible="code != 'fonepay'"/>
                 <field name="fonepay_username" invisible="code != 'fonepay'"/>
                 <field name="fonepay_password" invisible="code != 'fonepay'"/>

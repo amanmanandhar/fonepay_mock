@@ -8,7 +8,7 @@ class PaymentProvider(models.Model):
         selection_add=[('fonepay', 'Fonepay')],
         ondelete={'fonepay': 'set default'},
     )
-
+    fonepay_api_url = fields.Char(string='Fonepay API URL', default='http://127.0.0.1:5000')
     fonepay_merchant_code = fields.Char(string='Merchant Code',groups='base.group_system')
     fonepay_username = fields.Char(string='Username',groups='base.group_system')
     fonepay_password = fields.Char(string='Password',groups='base.group_system')
@@ -28,7 +28,7 @@ class PaymentProvider(models.Model):
 
         try:
             response = requests.post(
-                "http://127.0.0.1:5000/auth",
+                url=f'{self.fonepay_api_url}/auth',
                 json={
                     "username": self.fonepay_username,
                     "password": self.fonepay_password,
