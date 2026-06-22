@@ -1,3 +1,5 @@
+import string
+
 from odoo import fields, models
 
 class PosPaymentMethod(models.Model):
@@ -5,4 +7,4 @@ class PosPaymentMethod(models.Model):
 
     use_fonepay = fields.Boolean(string='Use Fonepay')
 
-    fonepay_merchant_code = fields.Char(fields)
+    fonepay_merchant_code = fields.Char(string='Fonepay Merchant Code')

@@ -7,8 +7,10 @@
         <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
+            <group>
                 <field name="use_fonepay"/>
                 <field name="fonepay_merchant_code" invisible="not use_fonepay"/>
+            </group>
             </xpath>
         </field>
     </record>

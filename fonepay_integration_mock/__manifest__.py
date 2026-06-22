@@ -9,12 +9,11 @@ Long description of module's purpose
     'website': "https://www.yourcompany.com",
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['point_of_sale'],
     'data': [
         # 'security/ir.model.access.csv',
         'views/pos_payment_views.xml',
     ],
     'installable': True,
-    'auto_install': True,
 }
 
